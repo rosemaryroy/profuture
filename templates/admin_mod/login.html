@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/login_style.css' %}">
+    
+</head>
+<body>
+    
+    <!--form area start-->
+  <div class="form">
+    <!--login form start-->
+    <form action="login" method="POST">
+        {% csrf_token %}
+  
+      <i class="fas fa-user-circle"></i>
+      <input class="user-input" type="text" name="username" placeholder="Username" required>
+      <input class="user-input" type="password" name="password" placeholder="Password" required>
+      <div class="options-01">
+        <label class="remember-me"><input type="checkbox" name="">Remember me</label>
+        <a href="#">Forgot your password?</a>
+      </div>
+      <input class="btn" type="submit" name="" value="LOGIN">
+      <div class="options-02">
+        <p>Not Registered? <a href="{% url 'register_page' %}">Create an Account</a></p>
+      
+    </div>
+    </form>
+    <!--login form end-->
+    <!--signup form start-->
+    
+    
+    <!--signup form end-->
+
+    <br>
+    <br>
+    <a class="b-btn" target="blank" href="https://www.buymeacoffee.com/danishlaeeq">
+      &nbsp;<i class="fa fa-coffee"></i>
+    </a>
+    <br>
+    <a class="b-btn patreon" target="blank" href="https://www.patreon.com/danishlaeeq">
+      <i class="fab fa-patreon"></i>&nbsp;
+    </a>
+  </div>
+  <!--form area end-->
+
+                                
+    </form>
+</body>
+</html>

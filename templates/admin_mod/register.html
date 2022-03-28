@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/reg_style.css' %}">
+</head>
+<body>
+ 
+  <form action="register" method="POST" id="regForm">
+    {% csrf_token %}
+    <lable id="title">Register Here</lable>
+    <table>
+      <tboby>
+        <tr>
+          <td class="lbl">First Name:</td>
+          <td><input type="text" name="first_name" id="name" class="textbox"/>
+        </tr>
+        <tr>
+          <td></td>
+          <td><lable class="help">maximum 25 char</lable></td>
+        </tr>
+        <tr>
+          <td class="lbl">Last Name:</td>
+          <td><input type="text" name="last_name" id="name" class="textbox"/>
+        </tr>
+        <tr>
+          <td></td>
+          <td><lable class="help">maximum 25 char</lable></td>
+        </tr>
+        <tr>
+          <td class="lbl">E-mail:</td>
+          <td><input type="text" name="email" id="email" class="textbox"/>
+        </tr>
+        <tr>
+          <td></td>
+          <td><lable class="help">xxxx @mail.com</lable></td>
+        </tr>
+        <tr>
+          <td class="lbl">Username:</td>
+          <td><input type="username" name="username" id="username" class="textbox"/>
+        </tr>
+        <tr>
+          <td></td>
+          <td><lable class="help">username</lable></td>
+        </tr>
+        <tr>
+          <td class="lbl">Password:</td>
+          <td><input type="password" name="password" id="password" class="textbox"/>
+        </tr>
+        <tr>
+          <td></td>
+          <td><lable class="help">5 to 10 characters</lable></td>
+        </tr>
+        <tr>
+          <td class="lbl">Confirm Password:</td>
+          <td><input type="password" name="cnfm_password" id="cnfm_password" class="textbox"/>
+        </tr>
+       
+      </tbody>
+    </table>
+    <button id="send" type="submit" id="submit" value="submit">Register</button>
+    <p>Already Registered? <a href="{% url 'login_page' %}">Sign In</a></p>
+  </form>
+    
+ 
+</body>
+</html>

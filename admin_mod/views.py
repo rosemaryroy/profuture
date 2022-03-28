@@ -49,10 +49,36 @@ def register(request):
 def base_ext(request):
     return render(request,'admin_mod/base_ext.html')
 
+
+def add_pro_form(request):
+    return render(request,'admin_mod/add_pro_form.html')
+
+def add_pro(request):
+    if request.method == 'POST':
+        project_name=request.POST['project_name']
+        documentation=request.POST['documentation']
+        project=request.FILES['project']
+
+        projects_=project_table(project_name=project_name,documentation=documentation)
+        projects_.save()
+        platform_=platform(platformid=projects_,project=project)
+        platform_.save()
+        return redirect('admin_mod/add_pro_show.html')
+
 def add_project_show(request):
-    show=project.objects.all()
-    return render(request,'admin_mod/add_project_show.html',{'project' : show})
+    show=project_table.objects.all()
+    return render(request,'admin_mod/add_project_show.html',{'project_table' : show})
 
 def add_pro_edit(request):
-    show=project.objects.get(projectid=project)
-    return render(request,'admin_mod/add_pro_edit.html',{'student_profile' : show})
+    show=project_table.objects.get(projectid=project_table)
+    return render(request,'admin_mod/add_pro_edit.html',{'project_table' : show})
+
+def update(request,platformid):
+    projects_=project_table.objects.get(platformid=platformid)
+    project_table.project_name=request.POST.get('project_name')
+    project_table.documentation=request.POST.get('documentation')
+    projects_.save()
+    platform_=platform.objects.get(platformid=projects_)
+    
+    platform_.save()
+    return redirect('show')

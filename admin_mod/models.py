@@ -17,7 +17,7 @@ class platform(models.Model):
     description=models.CharField(max_length=30)
     image=models.FileField(upload_to='images',default='default.jpg')
 
-class project(models.Model):
+class project_table(models.Model):
     projectid=models.AutoField(primary_key=True)
     platformid=models.ForeignKey(platform, on_delete=models.CASCADE)
     project_name=models.CharField(max_length=20)

@@ -12,8 +12,11 @@ urlpatterns = [
     path('register_page',views.register_page,name='register_page'),
     path('register',views.register,name='register'),
     path('base_ext',views.base_ext,name='base_ext'),
+    path('add_pro_form',views.add_pro_form,name='add_pro_form'),
+    path('add_pro',views.add_pro,name='add_pro'),
     path('add_project_show',views.add_project_show,name='add_project_show'),
-    path('add_pro_edit',views.add_pro_edit,name='add_pro_edit'),
+    path('edit/<int:platformid>',views.add_pro_edit,name='add_pro_edit'),
+    path('update/<int:platformid>',views.update,name='update'),
     
 ]
     

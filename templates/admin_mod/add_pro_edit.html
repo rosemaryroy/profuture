@@ -7,14 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="POST" action="/update/{{project.projectid.projectid}}" enctype="multipart/form-data">
+    <form method="POST" action="/update/{{project_table.platformid.platformid}}" enctype="multipart/form-data">
         {% csrf_token %}
         
-        <input type="text" id="title" name="title" value="{{project.projectid.title}}">
+        <input type="text" id="title" name="title" value="{{project_table.platformid.title}}">
         
-        <input type="number" id="doc" name="doc" value="{{project.projectid.doc}}">
+        <input type="number" id="doc" name="doc" value="{{project_table.platformid.doc}}">
         
-        <input type="file" id="project" name="project" value="{{project.projectid.project}}">
+        <input type="file" id="project" name="project" value="{{project_table.platformid.project}}">
         <button type="submit">submit</button>
 
     </form>

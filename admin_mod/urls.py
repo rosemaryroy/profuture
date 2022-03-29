@@ -17,7 +17,11 @@ urlpatterns = [
     path('add_project_show',views.add_project_show,name='add_project_show'),
     path('edit/<int:platformid>',views.add_pro_edit,name='add_pro_edit'),
     path('update/<int:platformid>',views.update,name='update'),
-    
+    path('add_platform_show',views.add_platform_show,name='add_platform_show'),
+    path('add_platform_form',views.add_platform_form,name='add_platform_form'),
+    path('add_platform',views.add_platform,name='add_platform'),
+    path('edit/<int:userid>',views.add_platform_edit,name='add_platform_edit'),
+    path('update/<int:userid>',views.platform_update,name='platform_update'),
 ]
     
 if settings.DEBUG:

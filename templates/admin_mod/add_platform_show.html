@@ -50,25 +50,25 @@
 <table  id="customers">
     <tr>
       
-      <th>Project Title</th>
-      <th>Project Documentation</th>
-      <th>Project</th>
+      <th>Platform Name</th>
+      <th>Description</th>
+      <th>Platform</th>
       <th class="text-nowrap">Action</th>
       
     </tr>
-    {% for i in project %} 
+    {% for i in platform %} 
     <tr>
-      <td><input class="w3-input w3-border-0"  disabled> {{i.platformid.project_name}}</td>
-      <td><input class="w3-input w3-border-0"  disabled>{{i.platformid.documentation}}</td>
-      <td></td>
+      <td><input class="w3-input w3-border-0"  disabled> {{i.userid.platform_name}}</td>
+      <td><input class="w3-input w3-border-0"  disabled>{{i.userid.description}}</td>
+      <td><img src="{{i.image.url}}" height="100" width="100"></td>
       <td>
-        <a href="edit/{{i.platformid.platformid}}"></a><i style='font-size:24px' class='fa'>&#xf044;</a></i>
+        <a href="edit/{{i.userid.userid}}"></a><i style='font-size:24px' class='fa'>&#xf044;</a></i>
         <a style="padding-left:35px;" href=""><i style="font-size:24px" class="fa">&#xf014;</a></i>
       </td>
     </tr> 
     {% endfor %}
     <tr>
-        <td><a href="{% url 'add_pro_form' %}">Add+</a></td>
+        <td><a href="{% url 'add_platform_form' %}">Add+</a></td>
         <td></td>
         <td></td>
         <td></td>

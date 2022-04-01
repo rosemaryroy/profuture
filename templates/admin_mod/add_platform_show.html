@@ -58,12 +58,12 @@
     </tr>
     {% for i in platform %} 
     <tr>
-      <td><input class="w3-input w3-border-0"  disabled> {{i.userid.platform_name}}</td>
-      <td><input class="w3-input w3-border-0"  disabled>{{i.userid.description}}</td>
+      <td><input class="w3-input w3-border-0" value="{{i.platform_name}}" > </td>
+      <td><input class="w3-input w3-border-0" value="{{i.description}}" ></td>
       <td><img src="{{i.image.url}}" height="100" width="100"></td>
       <td>
-        <a href="edit/{{i.userid.userid}}"></a><i style='font-size:24px' class='fa'>&#xf044;</a></i>
-        <a style="padding-left:35px;" href=""><i style="font-size:24px" class="fa">&#xf014;</a></i>
+        <a href="platformedit/{{i.platformid}}"><i style='font-size:24px' class='fa'>&#xf044;</a></i>
+        <a style="padding-left:35px;" href="platform_delete/{{i.platformid}}"><i style="font-size:24px" class="fa">&#xf014;</a></i>
       </td>
     </tr> 
     {% endfor %}

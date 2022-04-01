@@ -72,15 +72,15 @@
         </style>
 </head>
 <body>
-    <form method="POST" action="/update/{{project_table.platformid.platformid}}" enctype="multipart/form-data">
+    <form method="POST" action="/update/{{project_table.projectid}}" enctype="multipart/form-data">
         {% csrf_token %}
 
         <label for="title"><b>Project Title</b></label>
-        <input type="text" id="project_name" name="project_name" value="{{project_table.platformid.project_name}}">
+        <input type="text" id="project_name" name="project_name" value="{{project_table.project_name}}">
         <label for="doc"><b>Project Documentation</b></label>
-        <input type="text" id="documentation" name="documentation" value="{{project_table.platformid.documentation}}">
+        <input type="text" id="documentation" name="documentation" value="{{project_table.documentation}}">
         <label for="project"><b>Project</b></label>
-        <input type="file" id="project" name="project" value="{{project_table.platformid.project}}">
+        <input type="file" id="project" name="project" value="{{project_table.project}}">
         <button type="submit">submit</button>
 
     </form>

@@ -15,13 +15,17 @@ urlpatterns = [
     path('add_pro_form',views.add_pro_form,name='add_pro_form'),
     path('add_pro',views.add_pro,name='add_pro'),
     path('add_project_show',views.add_project_show,name='add_project_show'),
-    path('edit/<int:platformid>',views.add_pro_edit,name='add_pro_edit'),
-    path('update/<int:platformid>',views.update,name='update'),
+    path('edit/<int:projectid>',views.add_pro_edit,name='add_pro_edit'),
+    path('update/<int:projectid>',views.update,name='update'),
     path('add_platform_show',views.add_platform_show,name='add_platform_show'),
     path('add_platform_form',views.add_platform_form,name='add_platform_form'),
     path('add_platform',views.add_platform,name='add_platform'),
-    path('edit/<int:userid>',views.add_platform_edit,name='add_platform_edit'),
-    path('update/<int:userid>',views.platform_update,name='platform_update'),
+    path('platformedit/<int:platformid>',views.add_platform_edit,name='add_platform_edit'),
+    path('platformupdate/<int:platformid>',views.platform_update,name='platform_update'),
+    path('project_delete/<int:projectid>',views.project_delete,name='project_delete'),
+    path('platform_delete/<int:platformid>',views.platform_delete,name='platform_delete'),
+    path('project_view',views.project_view,name='project_view'),
+    
 ]
     
 if settings.DEBUG:

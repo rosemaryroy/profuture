@@ -82,9 +82,14 @@
         <label for="doc"><b>Project Documentation</b></label>
         <input type="text"  name="documentation" id="doc" required><b>
     
-        <label for="project"><b>Project</b></label><b>
-        <input type="file" name="project" id="project" required><b>
-        
+        <label for="project"><b>Project</b></label><b><br>
+        <input type="file" name="project" class="form-control" id="project" required><b><br>
+        <label for="select_platform"><b>Select Platform</b></label>
+        <select class="form-control" name="platfid">
+          {% for i in platform %}
+          <option value="{{i.platformid}}">{{i.platform_name}}</option>
+          {% endfor %}
+        </select>
     
         <button type="submit" class="registerbtn">submit</button>
       </div>

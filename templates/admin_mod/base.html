@@ -18,19 +18,17 @@
     <div class="wrapper d-flex">
       <div class="sidebar"> <small class="text-muted pl-3">WELCOME BACK</small>
           <ul>
-              <li><a href="#" style="font-size: larger;"><i class="fas fa-home"></i>Dashboard</a></li>
-              <li><a href="#"style="font-size: larger;"><i class="far fa-credit-card"></i>Projects</li>
-              <li><a href="#" style="font-size: larger;"><i class="fas fa-file-invoice"></i>MCQ</li>
-                <li><a href="#" style="font-size: larger;"><i class="fas fa-file-invoice"></i>Platforms</li>
+              <li><a href="{% url 'base_ext' %}" style="font-size: larger;"><i class="fas fa-home"></i>Dashboard</a></li>
+              <li><a href="{% url 'add_project_show' %}"style="font-size: larger;"><i class="far fa-credit-card"></i>Projects</li>
+              <li><a href="" style="font-size: larger;"><i class="fas fa-file-invoice"></i>MCQ</li>
+              <li><a href="{% url 'add_platform_show' %}" style="font-size: larger;"><i class="fas fa-file-invoice"></i>Platforms</li>
           </ul> <small class="text-muted px-3">TECHNOLOGY TOOLS</small>
           <ul>
               <li><a href="#" style="font-size: larger;"><i class="far fa-calendar-alt"></i>Tutorial Videos</a></li>
-              <li><a href="#" style="font-size: larger;"><i class="fas fa-video"></i>Video Meeting</a></li>
-              <li><a href="#" style="font-size: larger;"><i class="fa-id-badge"></i>Public Profile</a></li>
+              <li><a href="#" style="font-size: larger;"><i class="far fa-calendar-alt"></i>MCQ</a></li>
+             
           </ul> <small class="text-muted px-3">GROW YOUR CLIENT BASE</small>
           <ul>
-              <li><a href="#" style="font-size: larger;"><i class="fas fa-external-link-alt"></i>Share</a></li>
-              <li><a href="#" style="font-size: larger;"><i class="fas fa-code"></i>Add to Website</a></li>
               <li><a href="{% url 'index' %}" style="font-size: larger;"><i class="fas fa-code"></i>Logout</a></li>
           </ul>
       </div>

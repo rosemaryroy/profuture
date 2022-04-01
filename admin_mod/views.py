@@ -4,11 +4,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import *
 
-
-
-
-
-# Create your views here.
 def index(request):
     return render(request,'admin_mod/index.html')
 
@@ -51,18 +46,18 @@ def base_ext(request):
 
 
 def add_pro_form(request):
-    return render(request,'admin_mod/add_pro_form.html')
+    plat = platform.objects.filter(userid=request.user)
+    return render(request,'admin_mod/add_pro_form.html', {'platform': plat})
 
 def add_pro(request):
     if request.method == 'POST':
         project_name=request.POST['project_name']
         documentation=request.POST['documentation']
         project=request.FILES['project']
-
-        projects_=project_table(project_name=project_name,documentation=documentation)
+        platid = request.POST['platfid']
+        plat = platform.objects.get(platformid=platid)
+        projects_=project_table(project_name=project_name,documentation=documentation,platformid=plat,project=project)
         projects_.save()
-        platform_=platform(platformid=projects_,project=project)
-        platform_.save()
         return redirect('add_project_show')
 
 def add_project_show(request):
@@ -70,22 +65,20 @@ def add_project_show(request):
     show=project_table.objects.all()
     return render(request,'admin_mod/add_project_show.html',{'project_table' : show})
 
-def add_pro_edit(request):
-    show=project_table.objects.get(projectid=project_table)
+def add_pro_edit(request,projectid):
+    show=project_table.objects.get(projectid=projectid)
     return render(request,'admin_mod/add_pro_edit.html',{'project_table' : show})
 
-def update(request,platformid):
-    projects_=project_table.objects.get(platformid=platformid)
-    project_table.project_name=request.POST.get('project_name')
-    project_table.documentation=request.POST.get('documentation')
+def update(request,projectid):
+    projects_=project_table.objects.get(projectid=projectid)
+    projects_.project_name=request.POST.get('project_name')
+    projects_.documentation=request.POST.get('documentation')
     projects_.save()
-    platform_=platform.objects.get(platformid=projects_)
-    platform_.save()
     return redirect('add_project_show')
 
 def add_platform_show(request):
-    show=platform.objects.all()
-    return render(request,'admin_mod/add_platform_show.html',{'platform' : show})
+    platformshow=platform.objects.all()
+    return render(request,'admin_mod/add_platform_show.html',{'platform' : platformshow})
 
 def add_platform_form(request):
     return render(request,'admin_mod/add_platform_form.html')
@@ -97,22 +90,36 @@ def add_platform(request):
         description=request.POST['description']
         image=request.FILES['image']
 
-        platform_=platform(platform_name=platform_name,description=description)
+        platform_=platform(platform_name=platform_name,description=description,userid=request.user,image=image)
         platform_.save()
-        project_=project_table(userid=platform_,image=image)
-        project_.save()
         return redirect('add_platform_show')
 
 
-def add_platform_edit(request):
-    show=platform.objects.get(platformid=platform)
+def add_platform_edit(request, platformid):
+    show=platform.objects.get(platformid=platformid)
     return render(request,'admin_mod/add_platform_edit.html',{'platform' : show})
 
-def platform_update(request,userid):
-    platform_=platform.objects.get(userid=userid)
-    platform.platform_name=request.POST.get('platform_name')
-    platform.description=request.POST.get('description')
+def platform_update(request,platformid):
+    platform_=platform.objects.get(platformid=platformid)
+    platform_.platform_name=request.POST.get('platform_name')
+    platform_.description=request.POST.get('description')
+    try:
+        platform_.image=request.FILES['image']
+    except:
+        pass
     platform_.save()
-    project_=project_table.objects.get(platformid=platform_)
-    project_.save()
     return redirect('add_platform_show')
+
+def project_delete(request,projectid):
+    pro=project_table.objects.get(projectid=projectid)
+    pro.delete()
+    return redirect('add_project_show')
+
+def platform_delete(request,platformid):
+    plat=platform.objects.get(platformid=platformid)
+    plat.delete()
+    return redirect('add_platform_show')
+
+def project_view(request):
+    projectview=project_table.objects.all()
+    return render(request,'admin_mod/project_view.html',{'project_table' : projectview})

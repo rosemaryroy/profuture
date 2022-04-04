@@ -25,6 +25,12 @@ urlpatterns = [
     path('project_delete/<int:projectid>',views.project_delete,name='project_delete'),
     path('platform_delete/<int:platformid>',views.platform_delete,name='platform_delete'),
     path('project_view',views.project_view,name='project_view'),
+    path('add_mcq',views.add_mcq,name='add_mcq'),
+    path('add_mcq_form',views.add_mcq_form,name='add_mcq_form'),
+    path('mcq_form',views.mcq_form,name='mcq_form'),
+    path('mcqedit/<int:mcqid>',views.add_mcq_edit,name='add_mcq_edit'),
+    path('mcqupdate/<int:mcqid>',views.mcq_update,name='mcq_update'),
+    path('mcq_delete/<int:mcqid>',views.mcq_delete,name='mcq_delete'),
     
 ]
     

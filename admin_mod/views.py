@@ -123,3 +123,45 @@ def platform_delete(request,platformid):
 def project_view(request):
     projectview=project_table.objects.all()
     return render(request,'admin_mod/project_view.html',{'project_table' : projectview})
+
+def add_mcq(request):
+    mcqshow=mcq.objects.all()
+    return render(request,'admin_mod/add_mcq.html',{'mcq' : mcqshow})
+
+def add_mcq_form(request):
+    return render(request,'admin_mod/add_mcq_form.html')
+
+def mcq_form(request):
+    if request.method == 'POST':
+        question=request.POST['question']
+        answer=request.POST['answer']
+        option1=request.POST['option1']
+        option2=request.POST['option2']
+        option3=request.POST['option3']
+        option4=request.POST['option4']
+        platid = request.POST['platfid']
+        plat = platform.objects.get(platformid=platid)
+        mcq_=mcq(question=question,answer=answer,option1=option1,option2=option2,option3=option3,option4=option4,platformid=plat)
+        mcq_.save()
+        return redirect('add_mcq')
+
+def add_mcq_edit(request, mcqid):
+    show=mcq.objects.get(mcqid=mcqid)
+    return render(request,'admin_mod/add_mcq_edit.html',{'mcq' : show})
+
+def mcq_update(request,mcqid):
+    mcq_=mcq.objects.get(mcqid=mcqid)
+    mcq_.question=request.POST.get('question')
+    mcq_.answer=request.POST.get('answer')
+    mcq_.option1=request.POST.get('option1')
+    mcq_.option2=request.POST.get('option2')
+    mcq_.option3=request.POST.get('option3')
+    mcq_.option4=request.POST.get('option4')
+    
+    mcq_.save()
+    return redirect('add_mcq_')
+
+def mcq_delete(request,mcqid):
+    mcq_=mcq.objects.get(mcqid=mcqid)
+    mcq_.delete()
+    return redirect('add_mcq')

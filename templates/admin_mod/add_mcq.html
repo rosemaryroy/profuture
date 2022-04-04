@@ -50,24 +50,36 @@
 <table  id="customers">
     <tr>
       
-      <th>Project Title</th>
-      <th>Project Documentation</th>
+      <th>Question</th>
+      <th>Answer</th>
+      <th>Option1</th>
+      <th>Option2</th>
+      <th>Option3</th>
+      <th>Option4</th>
       <th class="text-nowrap">Action</th>
       
     </tr>
-    {% for i in project_table %} 
+    {% for i in mcq %} 
     <tr>
-      <td><input class="w3-input w3-border-0"  disabled value="{{i.project_name}}"></td>
-      <td><input class="w3-input w3-border-0"  disabled value="{{i.documentation}}"></td>
+      <td><input class="w3-input w3-border-0"  disabled value="{{i.question}}"></td>
+      <td><input class="w3-input w3-border-0"  disabled value="{{i.answer}}"></td>
+      <td><input class="w3-input w3-border-0"  disabled value="{{i.option1}}"></td>
+      <td><input class="w3-input w3-border-0"  disabled value="{{i.option2}}"></td>
+      <td><input class="w3-input w3-border-0"  disabled value="{{i.option3}}"></td>
+      <td><input class="w3-input w3-border-0"  disabled value="{{i.option4}}"></td>
       
       <td>
-        <a href="edit/{{i.projectid}}"><i style='font-size:24px' class='fa'>&#xf044;</a></i>
-        <a style="padding-left:35px;" href="project_delete/{{i.projectid}}"><i style="font-size:24px" class="fa">&#xf014;</a></i>
+        <a href="mcqedit/{{i.mcq}}"><i style='font-size:24px' class='fa'>&#xf044;</a></i>
+        <a style="padding-left:35px;" href="mcq_delete/{{i.mcqid}}"><i style="font-size:24px" class="fa">&#xf014;</a></i>
       </td>
     </tr> 
     {% endfor %}
     <tr>
-        <td><a href="{% url 'add_pro_form' %}">Add+</a></td>
+        <td><a href="{% url 'add_mcq_form' %}">Add+</a></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
         <td></td>
         <td></td>
     </tr>

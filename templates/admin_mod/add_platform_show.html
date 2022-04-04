@@ -58,11 +58,11 @@
     </tr>
     {% for i in platform %} 
     <tr>
-      <td><input class="w3-input w3-border-0" value="{{i.platform_name}}" > </td>
-      <td><input class="w3-input w3-border-0" value="{{i.description}}" ></td>
+      <td>{{i.platform_name}} </td>
+      <td>{{i.description}}" </td>
       <td><img src="{{i.image.url}}" height="100" width="100"></td>
       <td>
-        <a href="platformedit/{{i.platformid}}"><i style='font-size:24px' class='fa'>&#xf044;</a></i>
+        <a href="edit/{{i.platformid}}"><i style='font-size:24px' class='fa'>&#xf044;</a></i>
         <a style="padding-left:35px;" href="platform_delete/{{i.platformid}}"><i style="font-size:24px" class="fa">&#xf014;</a></i>
       </td>
     </tr> 

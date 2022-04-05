@@ -92,11 +92,11 @@
         <label for="option4"><b>Option4</b></label><b>
         <input type="text" name="option4" id="option4" required><b>
         <label for="select_platform"><b>Select Platform</b></label>
-            <select class="form-control" name="platfid">
-                {% for i in platform %}
-            <option value="{{i.platformid}}">{{i.platform_name}}</option>
-            {% endfor %}
-            </select>
+        <select class="form-control" name="platfid">
+          {% for i in platform %}
+          <option value="{{i.platformid}}">{{i.platform_name}}</option>
+          {% endfor %}
+        </select>
         <button type="submit" class="registerbtn">submit</button>
       </div>
       

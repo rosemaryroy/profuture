@@ -72,7 +72,7 @@
         </style>
 </head>
 <body>
-    <form method="POST" action=/mcqupdate/{{mcq.mcqid}} enctype="multipart/form-data">
+    <form method="POST" action="/mcqupdate/{{mcq.mcqid}}" enctype="multipart/form-data">
         {% csrf_token %}
 
         <label for="question"><b>Question</b></label>

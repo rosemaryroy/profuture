@@ -129,7 +129,8 @@ def add_mcq(request):
     return render(request,'admin_mod/add_mcq.html',{'mcq' : mcqshow})
 
 def add_mcq_form(request):
-    return render(request,'admin_mod/add_mcq_form.html')
+    plat = platform.objects.filter(userid=request.user)
+    return render(request,'admin_mod/add_mcq_form.html', {'platform': plat})
 
 def mcq_form(request):
     if request.method == 'POST':
@@ -159,7 +160,7 @@ def mcq_update(request,mcqid):
     mcq_.option4=request.POST.get('option4')
     
     mcq_.save()
-    return redirect('add_mcq_')
+    return redirect('add_mcq')
 
 def mcq_delete(request,mcqid):
     mcq_=mcq.objects.get(mcqid=mcqid)

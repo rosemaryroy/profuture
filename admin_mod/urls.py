@@ -31,6 +31,7 @@ urlpatterns = [
     path('mcqedit/<int:mcqid>',views.add_mcq_edit,name='add_mcq_edit'),
     path('mcqupdate/<int:mcqid>',views.mcq_update,name='mcq_update'),
     path('mcq_delete/<int:mcqid>',views.mcq_delete,name='mcq_delete'),
+    path('course',views.course,name='course'),
     
 ]
     

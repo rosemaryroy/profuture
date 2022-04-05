@@ -1,0 +1,43 @@
+{% extends 'admin_mod/base.html' %}
+{% load static %}
+{% block body %}
+<style>
+    .card {
+      box-shadow: 0 0 10px 0 rgba(100, 100, 100, 0.26);
+    }
+    
+  </style>
+
+<div class="container">
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card" style="height: 200px; width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title" style="color: blue;"><a href="{% url 'add_platform_show' %}" >Courses</a></h5>
+            <p class="card-text">Add Courses</p>
+             
+          </div>
+        </div>
+      </div>
+        <div class="col-sm-4">
+          <div class="card" style="height: 200px; width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title" style="color: blue;"><a href="{% url 'project_view' %}">Tutorial Videos</a></h5>
+              <p class="card-text">Add tutorial videos</p>
+                
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="card" style="height: 200px; width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title" style="color: blue;"><a href="{% url 'add_project_show' %}">Course MCQ</a></h5>
+              <p class="card-text">Add course MCQ</p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+{% endblock %}

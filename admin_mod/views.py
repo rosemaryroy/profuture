@@ -166,3 +166,7 @@ def mcq_delete(request,mcqid):
     mcq_=mcq.objects.get(mcqid=mcqid)
     mcq_.delete()
     return redirect('add_mcq')
+
+
+def course(request):
+    return render(request,'admin_mod/course.html')

@@ -31,9 +31,9 @@ class mcq(models.Model):
 class courses(models.Model):
     courseid=models.AutoField(primary_key=True)
     platformid=models.ForeignKey(platform, on_delete=models.CASCADE)
-    coursename=models.CharField(max_length=50)
+    coursename=models.CharField(max_length=100)
     description=models.CharField(max_length=200)
-    modules=models.CharField(max_length=100)
+    modules=models.CharField(max_length=50)
     level=models.CharField(max_length=50)
 
 class tutorial(models.Model):

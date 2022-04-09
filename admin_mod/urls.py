@@ -32,6 +32,12 @@ urlpatterns = [
     path('mcqupdate/<int:mcqid>',views.mcq_update,name='mcq_update'),
     path('mcq_delete/<int:mcqid>',views.mcq_delete,name='mcq_delete'),
     path('course',views.course,name='course'),
+    path('add_course',views.add_course,name='add_course'),
+    path('add_course_form',views.add_course_form,name='add_course_form'),
+    path('course_show',views.course_show,name='course_show'),
+    path('course_edit/<int:courseid>',views.course_edit,name='course_edit'),
+    path('course_update/<int:courseid>',views.course_update,name='course_update'),
+    path('course_delete/<int:courseid>',views.course_delete,name='course_delete'),
     
 ]
     

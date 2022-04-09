@@ -170,3 +170,39 @@ def mcq_delete(request,mcqid):
 
 def course(request):
     return render(request,'admin_mod/course.html')
+
+def add_course(request):
+    plat = platform.objects.filter(userid=request.user)
+    return render(request,'admin_mod/add_course.html', {'platform': plat})
+
+def add_course_form(request):
+    if request.method == 'POST':
+        course_name=request.POST['coursename']
+        description=request.POST['description']
+        module=request.POST['modules']
+        platid = request.POST['platfid']
+        plat = platform.objects.get(platformid=platid)
+        course_=courses(coursename=course_name,description=description,modules=module,platformid=plat)
+        course_.save()
+        return redirect('course_show')
+
+def course_show(request):
+    courseshow=courses.objects.all()
+    return render(request,'admin_mod/course_show.html',{'courses' : courseshow})
+
+def course_edit(request, courseid):
+    show=courses.objects.get(courseid=courseid)
+    return render(request,'admin_mod/course_edit.html',{'courses' : show})
+
+def course_update(request,courseid):
+    course_=courses.objects.get(courseid=courseid)
+    course_.coursename=request.POST.get('coursename')
+    course_.description=request.POST.get('description')
+    course_.module=request.POST.get('modules')
+    course_.save()
+    return redirect('course_show')
+
+def course_delete(request,courseid):
+    course_=courses.objects.get(courseid=courseid)
+    course_.delete()
+    return redirect('course_show')

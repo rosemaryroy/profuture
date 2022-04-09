@@ -1,0 +1,109 @@
+{% extends 'admin_mod/base.html' %}
+{% load static %}
+{% block body %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Add padding to containers */
+    .container {
+      padding: 16px;
+      background-color: white;
+    }
+    
+    /* Full-width input fields */
+    input[type=text], input[type=password] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      display: inline-block;
+      border: none;
+      background: #f1f1f1;
+    }
+    
+    input[type=text]:focus, input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+    
+    /* Overwrite default styles of hr */
+    hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+    }
+    
+    /* Set a style for the submit button */
+    .registerbtn {
+      background-color: blue;
+      color: white;
+      padding: 16px 20px;
+      margin-left: 250px;
+      border: double;
+      cursor: pointer;
+      width: 20%;
+      opacity: 0.9;
+      margin-top: 70px;
+    }
+    
+    .registerbtn:hover {
+      opacity: 0.8;
+    }
+    
+    /* Add a blue text color to links */
+    a {
+      color: dodgerblue;
+    }
+    
+    /* Set a grey background color and center the text of the "sign in" section */
+    
+    </style>
+    </head>
+    <body>
+    
+    <form action="add_course_form" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+      <div class="container">
+        <h1>ADD COURSE</h1>
+        <hr>
+        <label for="select_platform"><b>Select Platform</b></label>
+        <select class="form-control" name="platfid">
+          {% for i in platform %}
+          <option value="{{i.platformid}}">{{i.platform_name}}</option>
+          {% endfor %}
+        </select>
+        <label for="name"><b>Course Name</b></label>
+        <input type="text"  name="coursename" id="name" required>
+    
+        <label for="des"><b>Course Description</b></label>
+        <input type="text"  name="description" id="des" required><b>
+    
+        <label for="modules"><b>Mdules</b></label><b><br>
+        <input type="text" name="modules" class="form-control" id="modules" required><b><br>
+        <label for="select_platform"><b>Select Platform</b></label>
+        <select class="form-control" name="level">
+           
+            <option value="Beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+            <option value="All level">All level</option>
+             
+        </select>
+    
+        <button type="submit" class="registerbtn">submit</button>
+      </div>
+      
+    </form>
+    
+    </body>
+    </html>
+{% endblock %}

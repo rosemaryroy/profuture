@@ -1,0 +1,88 @@
+{% extends 'admin_mod/base.html' %}
+{% load static %}
+{% block body %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  margin-right: 20px;
+  margin-left: -10px;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {
+    background-color: #ddd;
+}
+
+#customers tr{width:100%;}
+
+#customers th {
+  padding-top: 1px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: blue;
+  color: white;
+}
+
+.text-nowrap {
+    white-space: nowrap!important;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+</style>
+</head>
+<body>
+
+<table  id="customers">
+    <tr>
+      
+      <th>Platform</th>
+      <th>Course name</th>
+      <th>Description</th>
+      <th>Module</th>
+      <th>Level</th>
+      <th class="text-nowrap">Action</th>
+      
+    </tr>
+    {% for i in courses %} 
+    <tr>
+      <td><input class="w3-input w3-border-0"  disabled value="{{i.platform}}"></td>  
+      <td><input class="w3-input w3-border-0" size="80"  disabled value="{{i.coursename}}"></td>
+      <td><input class="w3-input w3-border-0"  size="100" disabled value="{{i.description}}"></td>
+      <td><input class="w3-input w3-border-0" disabled value="{{i.modules}}"></td>
+      <td><input class="w3-input w3-border-0"  disabled value="{{i.level}}"></td>
+      
+      <td>
+        <a href="course_edit/{{i.courseid}}"><i style='font-size:24px' class='fa'>&#xf044;</a></i>
+        <a style="padding-left:35px;" href="course_delete/{{i.courseid}}"><i style="font-size:24px" class="fa">&#xf014;</a></i>
+      </td>
+    </tr> 
+    {% endfor %}
+    <tr>
+        <td><a href="{% url 'add_course' %}">Add+</a></td>
+        <td></td>
+        <td></td> 
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+   
+  </table>
+</body>
+
+</html>
+{% endblock %}

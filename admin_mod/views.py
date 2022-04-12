@@ -206,3 +206,19 @@ def course_delete(request,courseid):
     course_=courses.objects.get(courseid=courseid)
     course_.delete()
     return redirect('course_show')
+
+def tutorial_video(request):
+    plat = platform.objects.filter(userid=request.user)
+    return render(request,'admin_mod/tutorial_video.html', {'platform': plat})
+
+def tutorial_video_form(request):
+    if request.method == 'POST':
+        Name=request.POST['name']
+        description=request.POST['description']
+        video=request.FILES['video']
+        platid = request.POST['platfid']
+        plat = platform.objects.get(platformid=platid)
+        plat2 = courses.objects.get(platformid_id=plat.platformid)
+        tutorial_=tutorial(name=Name,description=description,platformid=plat,video=video,courseid_id=plat2.courseid)
+        tutorial_.save()
+        return redirect('tutorial_video')

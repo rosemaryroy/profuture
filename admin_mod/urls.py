@@ -9,8 +9,8 @@ urlpatterns = [
     path('',views.index,name='index'),
     path('login_page',views.login_page,name='login_page'),
     path('login',views.login,name='login'),
-    path('register_page',views.register_page,name='register_page'),
-    path('register',views.register,name='register'),
+    # path('register_page',views.register_page,name='register_page'),
+    # path('register',views.register,name='register'),
     path('base_ext',views.base_ext,name='base_ext'),
     path('add_pro_form',views.add_pro_form,name='add_pro_form'),
     path('add_pro',views.add_pro,name='add_pro'),
@@ -38,6 +38,8 @@ urlpatterns = [
     path('course_edit/<int:courseid>',views.course_edit,name='course_edit'),
     path('course_update/<int:courseid>',views.course_update,name='course_update'),
     path('course_delete/<int:courseid>',views.course_delete,name='course_delete'),
+    path('tutorial_video',views.tutorial_video,name='tutorial_video'),
+    path('tutorial_video_form',views.tutorial_video_form,name='tutorial_video_form'),
     
 ]
     

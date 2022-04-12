@@ -39,9 +39,10 @@ class courses(models.Model):
 class tutorial(models.Model):
     tutorialid=models.AutoField(primary_key=True)
     courseid=models.ForeignKey(courses, on_delete=models.CASCADE)
-    Name=models.CharField(max_length=50)
+    name=models.CharField(max_length=50)
     video=models.FileField(upload_to='videos')
     description=models.CharField(max_length=200)
+    platformid=models.ForeignKey(platform, on_delete=models.CASCADE, default='')
 
 class coursemcq(models.Model):
     mcqid=models.AutoField(primary_key=True)

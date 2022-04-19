@@ -181,8 +181,9 @@ def add_course_form(request):
         description=request.POST['description']
         module=request.POST['modules']
         platid = request.POST['platfid']
+        levels = request.POST['level']
         plat = platform.objects.get(platformid=platid)
-        course_=courses(coursename=course_name,description=description,modules=module,platformid=plat)
+        course_=courses(coursename=course_name,description=description,modules=module,platformid=plat,level=levels)
         course_.save()
         return redirect('course_show')
 
@@ -209,16 +210,41 @@ def course_delete(request,courseid):
 
 def tutorial_video(request):
     plat = platform.objects.filter(userid=request.user)
-    return render(request,'admin_mod/tutorial_video.html', {'platform': plat})
+    plat2 = platform.objects.get(userid=request.user)
+    cour = courses.objects.filter(platformid_id=plat2.platformid)
+    return render(request,'admin_mod/tutorial_video.html', {'platform': plat,'courses' : cour})
 
 def tutorial_video_form(request):
     if request.method == 'POST':
         Name=request.POST['name']
         description=request.POST['description']
-        video=request.FILES['video']
+        video = request.FILES['video']
         platid = request.POST['platfid']
         plat = platform.objects.get(platformid=platid)
-        plat2 = courses.objects.get(platformid_id=plat.platformid)
-        tutorial_=tutorial(name=Name,description=description,platformid=plat,video=video,courseid_id=plat2.courseid)
+        courid = request.POST['cid']
+        cour = courses.objects.get(courseid=courid)
+        tutorial_=tutorial(name=Name,description=description,platformid=plat,video=video,courseid=cour)
         tutorial_.save()
         return redirect('tutorial_video')
+
+def course_mcq(request):
+    mcqshow=mcq.objects.all()
+    return render(request,'admin_mod/course_mcq.html',{'mcq' : mcqshow})
+
+def course_mcq_form(request):
+    plat = platform.objects.filter(userid=request.user)
+    return render(request,'admin_mod/course_mcq_form.html', {'platform': plat})
+
+def coursemcq_form(request):
+    if request.method == 'POST':
+        question=request.POST['question']
+        answer=request.POST['answer']
+        option1=request.POST['option1']
+        option2=request.POST['option2']
+        option3=request.POST['option3']
+        option4=request.POST['option4']
+        platid = request.POST['platfid']
+        plat = platform.objects.get(platformid=platid)
+        coursemcq_=coursemcq(question=question,answer=answer,option1=option1,option2=option2,option3=option3,option4=option4,platformid=plat)
+        coursemcq_.save()
+        return redirect('course_mcq_form')

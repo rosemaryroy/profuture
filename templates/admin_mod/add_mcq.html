@@ -69,8 +69,8 @@
       <td><input class="w3-input w3-border-0"  disabled value="{{i.option4}}"></td>
       
       <td>
-        <a  href="mcqedit/{{i.mcqid}}"><i style='font-size:24px' class='fa'>&#xf044;</a></i>
-        <a style="padding-left:45px;" href="mcq_delete/{{i.mcqid}}"><i style="font-size:24px" class="fa">&#xf014;</a></i>
+        <a  href="{% url 'add_mcq_edit' i.mcqid %}"><i style='font-size:24px' class='fa'>&#xf044;</a></i>
+        <a style="padding-left:45px;" href="{% url 'mcq_delete' i.mcqid %}"><i style="font-size:24px" class="fa">&#xf014;</a></i>
       </td>
     </tr> 
     {% endfor %}

@@ -17,6 +17,9 @@ class project_table(models.Model):
     project_name=models.CharField(max_length=100)
     documentation=models.CharField(max_length=400)
     project=models.FileField(upload_to='projects')
+    userid=models.IntegerField(default=0)
+    pro_req=models.IntegerField(default=0)
+
 
 class mcq(models.Model):
     mcqid=models.AutoField(primary_key=True)

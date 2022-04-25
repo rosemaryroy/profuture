@@ -209,9 +209,8 @@ def course_delete(request,courseid):
     return redirect('course_show')
 
 def tutorial_video(request):
-    plat = platform.objects.filter(userid=request.user)
-    plat2 = platform.objects.get(userid=request.user)
-    cour = courses.objects.filter(platformid_id=plat2.platformid)
+    plat = platform.objects.all()
+    cour = courses.objects.all()
     return render(request,'admin_mod/tutorial_video.html', {'platform': plat,'courses' : cour})
 
 def tutorial_video_form(request):
@@ -225,11 +224,11 @@ def tutorial_video_form(request):
         cour = courses.objects.get(courseid=courid)
         tutorial_=tutorial(name=Name,description=description,platformid=plat,video=video,courseid=cour)
         tutorial_.save()
-        return redirect('tutorial_video')
+        return redirect('tutorial_show')
 
 def course_mcq(request):
-    mcqshow=mcq.objects.all()
-    return render(request,'admin_mod/course_mcq.html',{'mcq' : mcqshow})
+    mcqshow=coursemcq.objects.all()
+    return render(request,'admin_mod/course_mcq.html',{'coursemcq' : mcqshow})
 
 def course_mcq_form(request):
     plat = platform.objects.filter(userid=request.user)
@@ -245,6 +244,54 @@ def coursemcq_form(request):
         option4=request.POST['option4']
         platid = request.POST['platfid']
         plat = platform.objects.get(platformid=platid)
-        coursemcq_=coursemcq(question=question,answer=answer,option1=option1,option2=option2,option3=option3,option4=option4,platformid=plat)
+        coursemcq_=coursemcq(question=question,answer=answer,option1=option1,option2=option2,option3=option3,option4=option4,courseid_id=plat.platformid)
         coursemcq_.save()
-        return redirect('course_mcq_form')
+        return redirect('course_mcq')
+
+def course_mcq_edit(request, mcqid):
+    show=coursemcq.objects.get(mcqid=mcqid)
+    return render(request,'admin_mod/course_mcq_edit.html',{'mcq' : show})
+
+def course_mcq_update(request,mcqid):
+    mcq_=coursemcq.objects.get(mcqid=mcqid)
+    mcq_.question=request.POST.get('question')
+    mcq_.answer=request.POST.get('answer')
+    mcq_.option1=request.POST.get('option1')
+    mcq_.option2=request.POST.get('option2')
+    mcq_.option3=request.POST.get('option3')
+    mcq_.option4=request.POST.get('option4')
+    
+    mcq_.save()
+    return redirect('course_mcq')
+
+def course_mcq_delete(request,mcqid):
+    mcq1 = coursemcq.objects.get(mcqid=mcqid)
+    mcq1.delete()
+    return redirect('course_mcq')
+
+def tutorial_show(request):
+    tutorialshow=tutorial.objects.all()
+    return render(request,'admin_mod/tutorial_show.html',{'tutorial' : tutorialshow})
+
+def tutorial_edit(request, tutorialid):
+    show=tutorial.objects.get(tutorialid=tutorialid)
+    return render(request,'admin_mod/tutorial_edit.html',{'tutorial' : show})
+
+def tutorial_update(request,tutorialid):
+    tut=tutorial.objects.get(tutorialid=tutorialid)
+    tut.name=request.POST.get('name')
+    tut.description=request.POST.get('description')
+    tut.video=request.POST.get('video')
+    
+    tut.save()
+    return redirect('tutorial_show')
+
+def tutorial_delete(request,tutorialid):
+    tut=tutorial.objects.get(tutorialid=tutorialid)
+    tut.delete()
+    return redirect('tutorial_show')
+
+def acpt_pro(request):
+    tut=tutorial.objects.all()
+    tut.delete()
+    return redirect('tutorial_show')

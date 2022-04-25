@@ -1,0 +1,95 @@
+{% extends 'admin_mod/base.html' %}
+{% load static %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+          font-family: Arial, Helvetica, sans-serif;
+          
+        }
+        
+        * {
+          box-sizing: border-box;
+        }
+        
+        /* Add padding to containers */
+        .container {
+          padding: 16px;
+          background-color: white;
+        }
+        
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+          width: 100%;
+          padding: 15px;
+          margin: 5px 0 22px 0;
+          display: inline-block;
+          border: none;
+          background: #f1f1f1;
+        }
+        
+        input[type=text]:focus, input[type=password]:focus {
+          background-color: #ddd;
+          outline: none;
+        }
+        
+        /* Overwrite default styles of hr */
+        hr {
+          border: 1px solid #f1f1f1;
+          margin-bottom: 25px;
+        }
+        
+        /* Set a style for the submit button */
+        .registerbtn {
+          background-color: blue;
+          color: white;
+          padding: 16px 20px;
+          margin-left: 250px;
+          border: double;
+          cursor: pointer;
+          width: 20%;
+          opacity: 0.9;
+          margin-top: 70px;
+        }
+        
+        .registerbtn:hover {
+          opacity: 0.8;
+        }
+        
+        /* Add a blue text color to links */
+        a {
+          color: dodgerblue;
+        }
+        
+        /* Set a grey background color and center the text of the "sign in" section */
+        
+        </style>
+</head>
+<body>
+    <form method="POST" action="{% url 'course_mcq_update' mcq.mcqid %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <label for="question"><b>Question</b></label>
+        <input type="text" id="question" name="question" value="{{mcq.question}}">
+        <label for="answer"><b>Answer</b></label>
+        <input type="text" id="answer" name="answer" value="{{mcq.answer}}">
+        <label for="option1"><b>Option 1</b></label>
+        <input type="text" id="option1" name="option1" value="{{mcq.option1}}">
+        <label for="option2"><b>Option 2</b></label>
+        <input type="text" id="option2" name="option2" value="{{mcq.option2}}">
+        <label for="option3"><b>Option 3</b></label>
+        <input type="text" id="option3" name="option3" value="{{mcq.option3}}">
+        <label for="option4"><b>Option 4</b></label>
+        <input type="text" id="option4" name="option4" value="{{mcq.option4}}">
+        <button type="submit">submit</button>
+
+    </form>
+</body>
+</html>
+{% endblock %}

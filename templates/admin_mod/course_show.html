@@ -67,8 +67,8 @@
       <td><input class="w3-input w3-border-0"  disabled value="{{i.level}}"></td>
       
       <td>
-        <a href="course_edit/{{i.courseid}}"><i style='font-size:24px' class='fa'>&#xf044;</a></i>
-        <a style="padding-left:35px;" href="course_delete/{{i.courseid}}"><i style="font-size:24px" class="fa">&#xf014;</a></i>
+        <a href="{% url 'course_edit' i.courseid %}"><i style='font-size:24px' class='fa'>&#xf044;</a></i>
+        <a style="padding-left:35px;" href="{% url 'course_delete' i.courseid %}"><i style="font-size:24px" class="fa">&#xf014;</a></i>
       </td>
     </tr> 
     {% endfor %}

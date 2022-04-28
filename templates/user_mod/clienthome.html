@@ -16,7 +16,7 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/2/23/AS_sample_logo.png" alt="LOGO"></div>
+        <div class="logo"></div>
         <div class="push-left">
           <button id="menu-toggler" data-class="menu-active" class="hamburger">
             <span class="hamburger-line hamburger-line-top"></span>
@@ -27,7 +27,7 @@
           <!--  Menu compatible with wp_nav_menu  -->
           <ul id="primary-menu" class="menu nav-menu">
             <li class="menu-item current-menu-item"><a class="nav__link"  href="{% url 'clienthome' %}">Home</a></li>
-            <li class="menu-item dropdown"><a class="nav__link"  href="#">About</a>
+            <li class="menu-item dropdown"><a class="nav__link"  href="#">About</a></li>
                <ul class="sub-nav" >
                 <li><a class="sub-nav__link" href="#">link 1</a></li>
                 <li><a class="sub-nav__link" href="#">link 2</a></li>
@@ -35,10 +35,14 @@
               </ul>
       
             </li>
-              <label for="select_platform "> <b>platform</b></label>
+              <li for="select_platform " class="menu-item current-menu-item" > <a class="menu-item ">platform</a></li>
               <select class="form-contrl" name="plat">
-                {% for i in platform %}
+                {% for i in plat %}
+                {% if i.userid != i.userid %} 
+                <option value="{{plat2.platformid}}">{{plat2.platform_name}}</option>
+                {% else %}
                 <option value="{{i.platformid}}">{{i.platform_name}}</option>
+                {% endif %}
                 {% endfor %}
               </select>
 
@@ -53,275 +57,53 @@
     <div class="container py-5">
         <!-- For Demo Purpose-->
         <header class="text-center mb-5">
-          <h1 class="display-4 font-weight-bold">projects</h1>
+          <h1 class="display-4 font-weight-bold">Projects</h1>
           <p class="font-italic text-muted mb-0">.</p>
-          <p class="font-italic text-muted">Snippet By <a href="https://bootstrapious.com" class="text-muted">
-              <u>profuture</u></a>
+          <p class="font-italic text-muted"> <a href="https://bootstrapious.com" class="text-muted">
+              <u></u></a>
           </p>
         </header>
       
       
         <!-- First Row [Prosucts]-->
-        <h2 class="font-weight-bold mb-2">From profuture </h2>
-        <p class="font-italic text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+        <h2 class="font-weight-bold mb-2">From project House </h2>
+        <p class="font-italic text-muted mb-4">start something new</p>
+       
       
         <div class="row pb-5 mb-4">
+          {% for j in proj %} 
+          {% if plat.userid == request.user %}
           <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
             <!-- Card-->
             <div class="card rounded shadow-sm border-0">
-              <div class="card-body p-4"><img src="https://bootstrapious.com/i/snippets/sn-cards/shoes-1_gthops.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
-                <h5> <a href="#" class="text-dark">Awesome product</a></h5>
-                <p class="small text-muted font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              <div class="card-body p-4"><img src="" alt="" class="img-fluid d-block mx-auto mb-3">
+                <h5> <a href="{% url 'project' j.projectid %}" class="text-dark">{{j.project_name}}</a></h5>
+                <p class="small text-muted font-italic">{{j.documentation}}</p>
                 
               </div>
             </div>
           </div>
-      
+          {% else %}
           <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
             <!-- Card-->
             <div class="card rounded shadow-sm border-0">
-              <div class="card-body p-4"><img src="https://www.latestlaws.com/media/2021/08/1630255251-0.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
-                <h5> <a href="#" class="text-dark">public grieviance monitoring system </a></h5>
-                <p class="small text-muted font-italic">public grieviance redress and monitoring system for a panchayath.</p>
+              <div class="card-body p-4"><img src="" alt="" class="img-fluid d-block mx-auto mb-3">
+                <h5> <a href="{% url 'project' j.projectid %}" class="text-dark">{{j.project_name}}</a></h5>
+                <p class="small text-muted font-italic">{{j.documentation}}</p>
                 
               </div>
             </div>
           </div>
+          {% endif %}
+          {% endfor %}
+
       
-          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow-sm border-0">
-              <div class="card-body p-4"><img src="https://bootstrapious.com/i/snippets/sn-cards/shoes-3_rk25rt.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
-                <h5> <a href="#" class="text-dark">Awesome product</a></h5>
-                <p class="small text-muted font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                
-              </div>
-            </div>
-          </div>
+          
       
-          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow-sm border-0">
-              <div class="card-body p-4"><img src="https://bootstrapious.com/i/snippets/sn-cards/shoes-4_vgfjy9.jpg" alt="" class="img-fluid d-block mx-auto mb-3">
-                <h5> <a href="#" class="text-dark">Awesome product</a></h5>
-                <p class="small text-muted font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                
-              </div>
-            </div>
-          </div>
-        </div>
+          
       
       
-        <!-- Second Row [Team]-->
-        <h2 class="font-weight-bold mb-2">Our Team</h2>
-        <p class="font-italic text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-      
-        <div class="row pb-5 mb-4">
-          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card shadow-sm border-0 rounded">
-              <div class="card-body p-0"><img src="https://bootstrapious.com/i/snippets/sn-cards/profile-1_dewapk.jpg" alt="" class="w-100 card-img-top">
-                <div class="p-4">
-                  <h5 class="mb-0">Mark Rockwell</h5>
-                  <p class="small text-muted">CEO - Consultant</p>
-                 
-                </div>
-              </div>
-            </div>
-          </div>
-      
-          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card shadow-sm border-0 rounded">
-              <div class="card-body p-0"><img src="https://bootstrapious.com/i/snippets/sn-cards/profile-3_ybnq8v.jpg" alt="" class="w-100 card-img-top">
-                <div class="p-4">
-                  <h5 class="mb-0">Mark Rockwell</h5>
-                  <p class="small text-muted">CEO - Consultant</p>
-                 
-                </div>
-              </div>
-            </div>
-          </div>
-      
-          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card shadow-sm border-0 rounded">
-              <div class="card-body p-0"><img src="https://bootstrapious.com/i/snippets/sn-cards/profile-2_ujssbj.jpg" alt="" class="w-100 card-img-top">
-                <div class="p-4">
-                  <h5 class="mb-0">Mark Rockwell</h5>
-                  <p class="small text-muted">CEO - Consultant</p>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-      
-          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card shadow-sm border-0 rounded">
-              <div class="card-body p-0"><img src="https://res.cloudinary.com/mhmd/image/upload/v1570799922/profile-2_ujssbj.jpg" alt="" class="w-100 card-img-top">
-                <div class="p-4">
-                  <h5 class="mb-0">Mark Rockwell</h5>
-                  <p class="small text-muted">CEO - Consultant</p>
-                 
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      
-        <!-- Third Row [Profiles]-->
-        <h2 class="font-weight-bold mb-2">Active Profiles</h2>
-        <p class="font-italic text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-      
-        <div class="row pb-5 mb-4">
-      
-          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow-sm border-0">
-              <div class="card-body p-0">
-                <div class="bg-primary px-5 py-4 text-center card-img-top"><img src="https://bootstrapious.com/i/snippets/sn-cards/teacher-4.jpg" alt="..." width="100" class="rounded-circle mb-2 img-thumbnail d-block mx-auto">
-                  <h5 class="text-white mb-0">Emma Nevoresky</h5>
-                  <p class="small text-white mb-0">Elite user</p>
-                </div>
-                <div class="p-4 d-flex justify-content-center">
-                  <ul class="list-inline mb-0">
-                    <li class="list-inline-item">
-                      <h5 class="font-weight-bold mb-0 d-block">241</h5><small class="text-muted"><i class="fa fa-picture-o mr-1 text-primary"></i>Photos</small>
-                    </li>
-                    <li class="list-inline-item">
-                      <h5 class="font-weight-bold mb-0 d-block">84K</h5><small class="text-muted"><i class="fa fa-user-circle-o mr-1 text-primary"></i>Followers</small>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-      
-          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow-sm border-0">
-              <div class="card-body p-0">
-                <div class="bg-success px-5 py-4 text-center card-img-top"><img src="https://bootstrapious.com/i/snippets/sn-cards/teacher-2.jpg" alt="..." width="100" class="rounded-circle mb-2 img-thumbnail d-block mx-auto">
-                  <h5 class="text-white mb-0">Samuel Hardy</h5>
-                  <p class="small text-white mb-0">Elite user</p>
-                </div>
-                <div class="p-4 d-flex justify-content-center">
-                  <ul class="list-inline mb-0">
-                    <li class="list-inline-item">
-                      <h5 class="font-weight-bold mb-0 d-block">241</h5><small class="text-muted"><i class="fa fa-picture-o mr-1 text-success"></i>Photos</small>
-                    </li>
-                    <li class="list-inline-item">
-                      <h5 class="font-weight-bold mb-0 d-block">84K</h5><small class="text-muted"><i class="fa fa-user-circle-o mr-1 text-success"></i>Followers</small>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-      
-          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow-sm border-0">
-              <div class="card-body p-0">
-                <div class="bg-info px-5 py-4 text-center card-img-top"><img src="https://bootstrapious.com/i/snippets/sn-cards/teacher-7.jpg" alt="..." width="100" class="rounded-circle mb-2 img-thumbnail d-block mx-auto">
-                  <h5 class="text-white mb-0">Tom Sunderland</h5>
-                  <p class="small text-white mb-0">Elite user</p>
-                </div>
-                <div class="p-4 d-flex justify-content-center">
-                  <ul class="list-inline mb-0">
-                    <li class="list-inline-item">
-                      <h5 class="font-weight-bold mb-0 d-block">241</h5><small class="text-muted"><i class="fa fa-picture-o mr-1 text-info"></i>Photos</small>
-                    </li>
-                    <li class="list-inline-item">
-                      <h5 class="font-weight-bold mb-0 d-block">84K</h5><small class="text-muted"><i class="fa fa-user-circle-o mr-1 text-info"></i>Followers</small>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-      
-          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow-sm border-0">
-              <div class="card-body p-0">
-                <div class="bg-warning px-5 py-4 text-center card-img-top"><img src="https://bootstrapious.com/i/snippets/sn-cards/teacher-1.jpg" alt="..." width="100" class="rounded-circle mb-2 img-thumbnail d-block mx-auto">
-                  <h5 class="text-white mb-0">John Tarly</h5>
-                  <p class="small text-white mb-0">Elite user</p>
-                </div>
-                <div class="p-4 d-flex justify-content-center">
-                  <ul class="list-inline mb-0">
-                    <li class="list-inline-item">
-                      <h5 class="font-weight-bold mb-0 d-block">241</h5><small class="text-muted"><i class="fa fa-picture-o mr-1 text-warning"></i>Photos</small>
-                    </li>
-                    <li class="list-inline-item">
-                      <h5 class="font-weight-bold mb-0 d-block">84K</h5><small class="text-muted"><i class="fa fa-user-circle-o mr-1 text-warning"></i>Followers</small>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      
-      
-        <!-- First Row [Statistics]-->
-        <h2 class="font-weight-bold mb-2">Latest Statistics</h2>
-        <p class="font-italic text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-      
-        <div class="row pb-5">
-          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card-->
-            <div class="card rounded shadow-sm border-0">
-              <div class="card-body p-5"><i class="fa fa-bar-chart fa-2x mb-3 text-primary"></i>
-                <h5>Products Sales</h5>
-                <p class="small text-muted font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <div class="progress rounded-pill">
-                  <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;" class="progress-bar rounded-pill"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-      
-          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card -->
-            <div class="card rounded shadow-sm border-0">
-              <div class="card-body p-5"><i class="fa fa-tasks fa-2x mb-3 text-success"></i>
-                <h5>Completed Tasks</h5>
-                <p class="small text-muted font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <div class="progress rounded-pill">
-                  <div role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;" class="progress-bar bg-success rounded-pill"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-      
-          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <!-- Card -->
-            <div class="card rounded shadow-sm border-0">
-              <div class="card-body p-5"><i class="fa fa-user-circle-o fa-2x mb-3 text-info"></i>
-                <h5>New Users</h5>
-                <p class="small text-muted font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <div class="progress rounded-pill">
-                  <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;" class="progress-bar bg-info rounded-pill"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-      
-          <!-- Card -->
-          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
-            <div class="card rounded shadow-sm border-0">
-              <div class="card-body p-5"><i class="fa fa-shopping-bag fa-2x mb-3 text-warning"></i>
-                <h5>New Products</h5>
-                <p class="small text-muted font-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <div class="progress rounded-pill">
-                  <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;" class="progress-bar bg-warning rounded-pill"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+        
           {% block body %}
           {% endblock %}
         </div>

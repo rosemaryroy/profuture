@@ -10,7 +10,7 @@ def index(request):
 def login_page(request):
     return render(request,'admin_mod/login.html')
 
-def login(request):
+def ad_login(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']

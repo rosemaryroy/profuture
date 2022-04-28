@@ -14,7 +14,7 @@
     <!--form area start-->
   <div class="form">
     <!--login form start-->
-    <form action="login" method="POST">
+    <form action="{% url 'ad_login' %}" method="POST">
         {% csrf_token %}
   
       <i class="fas fa-user-circle"></i>
@@ -27,7 +27,7 @@
     <!--login form end-->
     <!--signup form start-->
     
-    
+   
     <!--signup form end-->
 
     <br>

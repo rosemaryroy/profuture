@@ -8,7 +8,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     re_path(r'^$',views.index,name='index'),
     re_path(r'^login_page$',views.login_page,name='login_page'),
-    re_path(r'^login$',views.login,name='login'),
+    re_path(r'^ad_login$',views.ad_login,name='ad_login'),
     re_path(r'^register_page$',views.register_page,name='register_page'),
     re_path(r'^register$',views.register,name='register'),
     re_path(r'^base_ext$',views.base_ext,name='base_ext'),

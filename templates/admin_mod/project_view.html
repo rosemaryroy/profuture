@@ -56,14 +56,14 @@
       
       
     </tr>
-    
+    {% for i in clientproject %}
     <tr>
-      <td><input class="w3-input w3-border-0"  value=""> </td>
+      <td><input class="w3-input w3-border-0"  value="{{clientproject.projectname}}"> </td>
       <td><input class="w3-input w3-border-0"   value=""></td>
       <td>&emsp;<button class="btn btn-success"> Accept </button>&emsp;&emsp;<button class="btn btn-danger justify-content-end"> Reject </button></td>
     </tr> 
-    
-   
+    {% endfor %}
+  
   </table>
 </body>
 

@@ -72,7 +72,7 @@
         </style>
 </head>
 <body>
-    <form method="POST" action="/course_update/{{courses.courseid}}" enctype="multipart/form-data">
+    <form method="POST" action="{% url 'course_update' courses.courseid %}" enctype="multipart/form-data">
         {% csrf_token %}
 
         <label for="name"><b>Course Name</b></label>

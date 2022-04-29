@@ -20,7 +20,7 @@ def ad_login(request):
             auth.login(request,user)
             return redirect('base_ext')
         else:
-            return redirect('base_ext')
+            return redirect('index')
 def register_page(request):
     return render(request,'admin_mod/register.html')
 

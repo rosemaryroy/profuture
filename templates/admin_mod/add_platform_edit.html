@@ -72,7 +72,7 @@
         </style>
 </head>
 <body>
-    <form method="POST" action="/platformupdate/{{platform.platformid}}" enctype="multipart/form-data">
+    <form method="POST" action="{% url 'platform_update' platform.platformid %}" enctype="multipart/form-data">
         {% csrf_token %}
 
         <label for="title"><b>Platform Name</b></label>
